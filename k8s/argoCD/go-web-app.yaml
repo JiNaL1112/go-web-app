@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: go-web-app
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: go-web-app   # default namespace for the app
+  source:
+    repoURL: https://github.com/JiNaL1112/go-web-app
+    targetRevision: main
+    path: helm/go-web-app-chart
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true   # ← ArgoCD auto-creates namespaces
