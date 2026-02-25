@@ -32,15 +32,4 @@ spec:
             limits:
               cpu: {{ .Values.app.resources.limits.cpu }}
               memory: {{ .Values.app.resources.limits.memory }}
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: {{ .Values.app.port }}
-            initialDelaySeconds: 10
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /ready
-              port: {{ .Values.app.port }}
-            initialDelaySeconds: 5
-            periodSeconds: 5
+          
