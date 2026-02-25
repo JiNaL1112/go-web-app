@@ -1,14 +1,14 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: my-gateway
-  namespace: default
+  name: {{ .Values.gateway.name }}
+  namespace: {{ .Values.namespace.gateway }}
 spec:
-  gatewayClassName: nginx
+  gatewayClassName: {{ .Release.Name }}-gateway-class
   listeners:
     - name: http
       protocol: HTTP
-      port: 80
+      port: {{ .Values.gateway.listenerPort }}
       allowedRoutes:
         namespaces:
           from: All
