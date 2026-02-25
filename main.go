@@ -35,14 +35,17 @@ func main() {
 	// Liveness - is app alive?
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("ok"))
+		if _, err := w.Write([]byte("ok")); err != nil {
+			http.Error(w, "failed to write response", http.StatusInternalServerError)
+		}
 	})
 
 	// Readiness - is app ready to serve traffic?
 	http.HandleFunc("/ready", func(w http.ResponseWriter, r *http.Request) {
-		// check db connection, cache, etc.
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("ready"))
+		if _, err := w.Write([]byte("ready")); err != nil {
+			http.Error(w, "failed to write response", http.StatusInternalServerError)
+		}
 	})
 
 	err := http.ListenAndServe("0.0.0.0:8080", nil)
