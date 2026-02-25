@@ -1,0 +1,13 @@
+nginxGateway:
+  gatewayClassName: nginx
+
+nginx:
+  kind: deployment
+  service:
+    type: NodePort
+    externalTrafficPolicy: Cluster
+    nodePorts:
+      - port: 32515
+        listenerPort: 80
+      - port: 31564
+        listenerPort: 443

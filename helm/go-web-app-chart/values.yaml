@@ -29,3 +29,14 @@ resources:
   limits:
     cpu: "500m"
     memory: "256Mi"
+
+
+app:
+  name: go-web-app
+
+
+
+hpa:
+  minReplicas: 1
+  maxReplicas: 3
+  cpuUtilization: 50
