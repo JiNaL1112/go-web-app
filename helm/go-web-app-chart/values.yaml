@@ -1,10 +1,3 @@
-replicaCount: 1
-
-image:
-  repository: jpatel6625/go-web-app
-  pullPolicy: IfNotPresent
-  tag: "22409878307"
-
 namespace:
   app: go-web-app
   gateway: gateway-system
@@ -22,17 +15,22 @@ gateway:
 httproute:
   host: go-web-app.local
 
-resources:
-  requests:
-    cpu: "100m"
-    memory: "128Mi"
-  limits:
-    cpu: "500m"
-    memory: "256Mi"
-
 
 app:
   name: go-web-app
+  replicas: 1
+  image:
+    repository: jpatel6625/go-web-app
+    tag: latest
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+  port: 8080
 
 
 
