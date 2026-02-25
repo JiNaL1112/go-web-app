@@ -4,6 +4,7 @@ metadata:
   name: go-web-app
   namespace: argocd
 spec:
+  project: default
   destination:
     server: https://kubernetes.default.svc
     namespace: go-web-app   # default namespace for the app

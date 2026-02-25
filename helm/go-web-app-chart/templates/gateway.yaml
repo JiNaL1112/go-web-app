@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.gateway.name }}
   namespace: {{ .Values.namespace.gateway }}
 spec:
-  gatewayClassName: {{ .Release.Name }}-gateway-class
+  gatewayClassName: {{ .Values.gateway.className }}
   listeners:
     - name: http
       protocol: HTTP

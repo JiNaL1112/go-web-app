@@ -16,6 +16,7 @@ service:
 
 gateway:
   name: go-web-app-gateway
+  className: nginx
   listenerPort: 80
 
 httproute:

@@ -1,6 +1,6 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: GatewayClass
 metadata:
-  name: {{ .Release.Name }}-gatewayclass
+  name: {{ .Values.gateway.className }}
 spec:
   controllerName: gateway.nginx.org/nginx-gateway-controller
