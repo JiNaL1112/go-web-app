@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: jinal1112/go-web-app
   pullPolicy: IfNotPresent
-  tag: "latest"
+  tag: "v1"
 
 namespace:
   app: go-web-app
