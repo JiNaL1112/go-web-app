@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: jinal1112/go-web-app
+  repository: jpatel6625/go-web-app
   pullPolicy: IfNotPresent
   tag: "v1"
 
