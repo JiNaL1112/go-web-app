@@ -1,69 +1,132 @@
-<Doctype html>
-<html>
-    <head>
-        <title>Contact</title>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Jinal Patel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f; --surface: #12121a; --surface2: #1a1a26;
+            --accent: #7c6dfa; --accent2: #00e5c3;
+            --text: #e8e8f0; --muted: #888899; --border: rgba(255,255,255,0.07);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.7; }
+        body::before {
+            content: ''; position: fixed; inset: 0;
+            background-image: linear-gradient(rgba(124,109,250,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(124,109,250,0.03) 1px, transparent 1px);
+            background-size: 60px 60px; pointer-events: none; z-index: 0;
+        }
+        header { position: sticky; top: 0; z-index: 100; background: rgba(10,10,15,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 40px; }
+        nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        .nav-logo span { color: var(--accent); }
+        nav ul { list-style: none; display: flex; gap: 8px; }
+        nav ul li a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 6px 14px; border-radius: 6px; transition: all 0.2s; }
+        nav ul li a:hover, nav ul li a.active { color: var(--text); background: var(--surface2); }
 
-            header {
-                background-color: #333;
-                color: #fff;
-                padding: 10px 0;
-                text-align: center;
-            }
+        .page-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; padding: 80px 40px; }
+        .page-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--accent2); margin-bottom: 12px; }
+        .page-title { font-family: 'Syne', sans-serif; font-size: 2.6rem; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 16px; line-height: 1.1; }
+        .page-title span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .intro-text { font-size: 1.05rem; color: var(--muted); font-weight: 300; margin-bottom: 48px; }
 
-            nav ul {
-                list-style-type: none;
-                padding: 0;
-            }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
 
-            nav ul li {
-                display: inline;
-                margin-right: 10px;
-            }
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-            nav ul li a {
-                color: #fff;
-                text-decoration: none;
-            }
+        .contact-card:hover { border-color: rgba(124,109,250,0.4); transform: translateY(-2px); }
 
-            main {
-                padding: 20px;
-            }
+        .contact-card .card-icon {
+            width: 44px; height: 44px;
+            background: rgba(124,109,250,0.12);
+            border: 1px solid rgba(124,109,250,0.25);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+        }
 
-            section {
-                margin-bottom: 20px;
-            }
+        .contact-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+        .contact-card p { font-size: 0.85rem; color: var(--muted); }
+        .contact-card .link-label { font-size: 0.8rem; color: var(--accent); margin-top: 4px; }
 
-            footer {
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                padding: 10px 0;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="home">Home</a></li>
-                    <li><a href="about">About</a></li>
-                    <li><a href="contact">Contact</a></li>
-                    <li><a href="courses">Courses</a></li>
-                    <li><a href="courses">Jinal</a></li>
-                </ul>
-            </nav>
-        </header>
+        .full-card { grid-column: 1 / -1; }
 
-        <main>
-            <section>
-                <h1>Contact Us</h1>
-                <p>For any doubts while learning, Join our Members only exclusive slack channel</p>
-                <a href="https://www.youtube.com/abhishekVeeramalla/join">Join Slack</a>
+        footer { position: relative; z-index: 1; border-top: 1px solid var(--border); text-align: center; padding: 32px; color: var(--muted); font-size: 0.85rem; }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            header { padding: 0 20px; }
+            .page-content { padding: 60px 20px; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home" class="nav-logo">Jinal<span>.</span>dev</a>
+        <ul>
+            <li><a href="home">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="contact" class="active">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="page-content">
+    <div class="page-label">Get In Touch</div>
+    <h1 class="page-title">Let's <span>Connect</span></h1>
+    <p class="intro-text">
+        Whether you have a question about cloud infrastructure, want to collaborate, 
+        or just want to geek out about Kubernetes — I'm happy to connect!
+    </p>
+
+    <div class="contact-grid">
+        <a href="https://www.linkedin.com/in/jinalbenp/" target="_blank" class="contact-card">
+            <div class="card-icon">💼</div>
+            <h3>LinkedIn</h3>
+            <p>Connect professionally and follow my career updates.</p>
+            <div class="link-label">linkedin.com/in/jinalbenp →</div>
+        </a>
+        <a href="https://medium.com/@jinalpatel11121999" target="_blank" class="contact-card">
+            <div class="card-icon">✍️</div>
+            <h3>Medium</h3>
+            <p>Read my technical articles on Kubernetes, Argo CD, and AWS.</p>
+            <div class="link-label">@jinalpatel11121999 →</div>
+        </a>
+        <div class="contact-card full-card" style="cursor:default;">
+            <div class="card-icon">💬</div>
+            <h3>Questions & Doubts</h3>
+            <p>For any DevOps learning doubts or discussion, the best way to reach me is via LinkedIn. I'm always happy to help fellow learners on their DevOps journey.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Built by <strong>Jinal Patel</strong> · 
+        <a href="https://medium.com/@jinalpatel11121999" target="_blank">Medium</a> · 
+        <a href="https://www.linkedin.com/in/jinalbenp/" target="_blank">LinkedIn</a>
+    </p>
+</footer>
+
+</body>
+</html>

@@ -1,90 +1,303 @@
-<Docktype html>
-<html>
-    <head>
-        <title>About</title>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Jinal Patel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --surface2: #1a1a26;
+            --accent: #7c6dfa;
+            --accent2: #00e5c3;
+            --text: #e8e8f0;
+            --muted: #888899;
+            --border: rgba(255,255,255,0.07);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(124,109,250,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(124,109,250,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(10,10,15,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
+        }
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        .nav-logo span { color: var(--accent); }
+        nav ul { list-style: none; display: flex; gap: 8px; }
+        nav ul li a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 6px 14px; border-radius: 6px; transition: all 0.2s; }
+        nav ul li a:hover, nav ul li a.active { color: var(--text); background: var(--surface2); }
 
-            header {
-                background-color: #333;
-                color: #fff;
-                padding: 10px 0;
-                text-align: center;
-            }
+        .page-content {
+            position: relative; z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
 
-            nav ul {
-                list-style-type: none;
-                padding: 0;
-            }
+        .page-label {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 3px; color: var(--accent2); margin-bottom: 12px;
+        }
 
-            nav ul li {
-                display: inline;
-                margin-right: 10px;
-            }
+        .page-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
 
-            nav ul li a {
-                color: #fff;
-                text-decoration: none;
-            }
+        .page-title span {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-            main {
-                padding: 20px;
-            }
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--muted);
+            font-weight: 300;
+            margin-bottom: 60px;
+            line-height: 1.8;
+        }
 
-            section {
-                margin-bottom: 20px;
-            }
+        .about-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 24px;
+        }
 
-            footer {
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                padding: 10px 0;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="home">Home</a></li>
-                    <li><a href="about">About</a></li>
-                    <li><a href="contact">Contact</a></li>
-                    <li><a href="courses">Courses</a></li>
-                </ul>
-            </nav>
-        </header>
+        .about-block h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        <main>
-            <section>
-                <h1>About the Author</h1>
-                <p>Hi Everyone, My name is Abhishek and welcome to my channel :)</p>
+        .about-block h3 .icon {
+            width: 36px; height: 36px;
+            background: rgba(124,109,250,0.12);
+            border: 1px solid rgba(124,109,250,0.25);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
 
-                    <p>    I am an opensource enthusiast and a great believer in sharing knowledge. </p>
-                        <p>  I have my footprints in popular opensource projects like Argo CD, Argo CD Operator, Argo Rollouts Manager, GitOps Operator, F5 Ingress Controller, Nginx Ingress Controller by Nginx and others. </p>
-                    
-                            <p> Apart from working with Red Hat as a GitOps product lead, I also hold below positions in OpenSource communities</p>
-                                <p>  - Maintainer of Argo CD Operator</p>
-                                    <p> - Creator of Argo Rollouts Manager</p>
-                                        <p> - Maintainer of RedHat Developer (GitOps operator)</p>
-                                            <p> - Member of Argo Project</p>
-                                                <p> - Member of Argo SIG Security</p>
-                    
-                                                    <p> If you want to learn complete devops for free with practical projects, checkout the playlist</p>
-                                                        <p><a href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvIKMhk8WhzN1pYoJ1YU8Csa"> Playlists</a></p>
-                    
-                                                            <p> Please subscribe to the channel to keep learning and growing together. Thanks :)</p>
-            </section>
-        </main>
+        .about-block p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
 
-        <footer>
-            <p>&copy; Jinal Patel</p>
-        </footer>
-    </body>
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 28px;
+            position: relative;
+        }
+
+        .timeline-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 17px;
+            top: 36px;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(0,229,195,0.1);
+            border: 1px solid rgba(0,229,195,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content h4 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content p {
+            color: var(--muted);
+            font-size: 0.875rem;
+        }
+
+        .links-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .link-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .link-btn.accent { background: var(--accent); border-color: var(--accent); color: #fff; }
+        .link-btn.accent:hover { background: #6b5ce7; }
+
+        footer {
+            position: relative; z-index: 1;
+            border-top: 1px solid var(--border);
+            text-align: center; padding: 32px;
+            color: var(--muted); font-size: 0.85rem;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; }
+            .page-content { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="home" class="nav-logo">Jinal<span>.</span>dev</a>
+        <ul>
+            <li><a href="home">Home</a></li>
+            <li><a href="about" class="active">About</a></li>
+            <li><a href="contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="page-content">
+    <div class="page-label">Who I Am</div>
+    <h1 class="page-title">About <span>Jinal Patel</span></h1>
+    <p class="intro-text">
+        I'm a DevOps Engineer passionate about automation, cloud infrastructure, and continuous learning. 
+        I believe the best way to grow is to build real things, make mistakes in a homelab, 
+        and share honest experiences with the community.
+    </p>
+
+    <div class="about-block">
+        <h3><span class="icon">🌱</span> My Journey</h3>
+        <p>
+            My DevOps journey started with curiosity about how software actually runs in production. 
+            That curiosity turned into a deep passion for Kubernetes, GitOps, and cloud infrastructure. 
+            I document my learnings on Medium — from building a Kubernetes homelab with bare-metal 
+            mini PCs, to understanding the internals of resource scheduling, to setting up production-grade 
+            Argo CD pipelines on AWS EKS. Every article comes from real hands-on experience.
+        </p>
+    </div>
+
+    <div class="about-block">
+        <h3><span class="icon">🔧</span> What I Work On</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot">☸️</div>
+                <div class="timeline-content">
+                    <h4>Kubernetes Homelab</h4>
+                    <p>Built a multi-node K8s cluster on 2 Mini PCs and a laptop — full networking, ingress, and workload management from scratch.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">🚀</div>
+                <div class="timeline-content">
+                    <h4>GitOps with Argo CD</h4>
+                    <p>Implemented declarative GitOps workflows, including connecting remote EKS clusters to Argo CD with secure, reproducible configurations.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">☁️</div>
+                <div class="timeline-content">
+                    <h4>AWS Cloud Engineering</h4>
+                    <p>Designing and automating cloud infrastructure on AWS — EKS, IAM, networking, and IaC with Terraform.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">✍️</div>
+                <div class="timeline-content">
+                    <h4>Technical Writing on Medium</h4>
+                    <p>Sharing practical DevOps guides and real project write-ups to help others learn from genuine experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-block">
+        <h3><span class="icon">💬</span> Connect With Me</h3>
+        <p>I love connecting with fellow engineers, learners, and cloud enthusiasts. Whether you want to discuss Kubernetes internals, share homelab ideas, or just say hi — reach out!</p>
+        <div class="links-row">
+            <a href="https://medium.com/@jinalpatel11121999" target="_blank" class="link-btn accent">✍️ Medium Articles</a>
+            <a href="https://www.linkedin.com/in/jinalbenp/" target="_blank" class="link-btn">💼 LinkedIn</a>
+            <a href="contact" class="link-btn">📬 Contact Me</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Built by <strong>Jinal Patel</strong> · 
+        <a href="https://medium.com/@jinalpatel11121999" target="_blank">Medium</a> · 
+        <a href="https://www.linkedin.com/in/jinalbenp/" target="_blank">LinkedIn</a>
+    </p>
+</footer>
+
+</body>
 </html>
