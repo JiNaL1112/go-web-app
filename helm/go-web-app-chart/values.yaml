@@ -21,7 +21,7 @@ app:
   replicas: 1
   image:
     repository: jpatel6625/go-web-app
-    tag: latest
+    tag: "v1"
     pullPolicy: IfNotPresent
   resources:
     requests:
