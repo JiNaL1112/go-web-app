@@ -5,7 +5,6 @@ metadata:
   namespace: {{ .Values.namespace.app }}
   labels:
     app.kubernetes.io/name: {{ .Values.app.name }}
-    app.kubernetes.io/version: {{ .Values.app.image.tag }}
     app.kubernetes.io/managed-by: argocd
 spec:
   replicas: {{ .Values.app.replicas }}
@@ -16,7 +15,6 @@ spec:
     metadata:
       labels:
         app: {{ .Values.app.name }}
-        version: {{ .Values.app.image.tag }}
     spec:
       serviceAccountName: {{ .Values.app.name }}-sa
       containers:
