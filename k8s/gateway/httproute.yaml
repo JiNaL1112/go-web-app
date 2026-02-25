@@ -15,5 +15,5 @@ spec:
             type: PathPrefix
             value: /
       backendRefs:
-        - name: go-web-app
+        - name: nginx-deploy
           port: 80

@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: go-web-app
-        image: jpatel6625/go-web-app:v1
+        image: jpatel6625/go-web-app:22417900204
         ports:
         - containerPort: 8080

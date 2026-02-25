@@ -30,4 +30,4 @@ spec:
             limits:
               cpu: {{ .Values.app.resources.limits.cpu }}
               memory: {{ .Values.app.resources.limits.memory }}
-          
+
