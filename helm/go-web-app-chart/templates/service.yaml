@@ -3,8 +3,8 @@ kind: Service
 metadata:
   namespace: {{ .Values.namespace.app }}
   labels:
-    app: {{ .Release.Name }}
-  name: {{ .Release.Name }}-svc
+    app: {{ .Values.app.name }}
+  name: {{ .Values.app.name }}-svc
 spec:
   ports:
   - port: {{ .Values.service.port }}
@@ -12,6 +12,6 @@ spec:
     targetPort: {{ .Values.service.targetPort }}
   type: {{ .Values.service.type }}
   selector:
-    app: {{ .Release.Name }}
+    app: {{ .Values.app.name }}
 status:
   loadBalancer: {}

@@ -15,7 +15,6 @@ gateway:
 httproute:
   host: go-web-app.local
 
-
 app:
   name: go-web-app
   replicas: 1
