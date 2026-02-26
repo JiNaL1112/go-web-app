@@ -20,7 +20,7 @@ app:
   replicas: 1
   image:
     repository: jpatel6625/go-web-app
-    tag: "22417900204"
+    tag: "22425466516"
     pullPolicy: IfNotPresent
   resources:
     requests:
