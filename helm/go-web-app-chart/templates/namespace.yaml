@@ -1,0 +1,10 @@
+# Source: go-web-app-chart/templates/namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.namespace.app }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.namespace.gateway }}
